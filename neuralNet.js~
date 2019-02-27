@@ -52,7 +52,7 @@ let targetOutputs = [1, 1, 1, 0];
 let b1 = 0.5, b2 = 0.5;
 let w1 = 0.5, w2 = 0.5, w3 = 0.5, w4 = 0.5, w5 = 0.5, w6 = 0.5;
 let h1, h2;
-let eta = 0.1;
+let eta = .8;
 let guessedOutput;
 let rms;
 

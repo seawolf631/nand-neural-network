@@ -37,6 +37,12 @@ function calculateDelta(deltaNum, output, target, h1Output, h2Output, input1, in
     else if(deltaNum === "w6"){
 	return deltaNodeO1 * h2Output;
     }
+    else if(deltaNum === "b2"){
+	return deltaNodeO1;
+    }
+    else if(deltaNum === "b1"){
+	return deltaNodeH1+deltaNodeH2;
+    }
 }
 
 //Update Weights from BackPropagation
@@ -84,6 +90,8 @@ for(let i = 0; i < 100000000; i++){
 	let delta4 = calculateDelta("w4",guessedOutput, currentTargetOutput, h1Output, h2Output,input1,input2);
 	let delta5 = calculateDelta("w5",guessedOutput, currentTargetOutput, h1Output, h2Output,input1,input2);
 	let delta6 = calculateDelta("w6",guessedOutput, currentTargetOutput, h1Output, h2Output,input1,input2);
+	let deltaB2 = calculateDelta("b2", guessedOutput, currentTargetOutput, h1Output, h2Output, input1, input2);
+	let deltaB1 = calculateDelta("b1", guessedOutput, currentTargetOutput, h1Output, h2Output, input1, input2);
 
 	//Updating New Weights
 	w1 = updateWeights(w1, eta, delta1);
@@ -92,5 +100,7 @@ for(let i = 0; i < 100000000; i++){
 	w4 = updateWeights(w4, eta, delta4);
 	w5 = updateWeights(w5, eta, delta5);
 	w6 = updateWeights(w6, eta, delta6);
+	b1 = updateWeights(b1, eta, deltaB1);
+	b2 = updateWeights(b2, eta, deltaB2);
     }
 }
